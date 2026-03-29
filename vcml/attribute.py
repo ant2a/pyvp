@@ -37,11 +37,14 @@ class Attribute:
         if self.count == 0:
             return "<empty>"
         val = self.conn.command("geta," + self.hierarchy_name())
-        if len(val) != self.count:
-            raise Exception("unexpected response to a command: " + str(val))
         if self.count == 1:
             return val[0]
-        return val
+        else:
+            split = val[0].split(" ")
+            if len(split) != self.count:
+                raise Exception("unexpected response to a command: " + str(val))
+            else:
+                return split
 
     def set(self, val):
         return  # ToDo
