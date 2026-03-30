@@ -345,8 +345,7 @@ class Application:
 
         for attr in attrs:
             val = attr.get()
-            print("{}{:<16}{}{}".format(termcolors.BOLD + termcolors.WHITE,
-                                        attr.name, termcolors.RESET, str(val)))
+            print(f"{attr.type:<8} {termcolors.BOLD + termcolors.WHITE}{attr.name:<16}{termcolors.RESET}{str(val)}")
 
     def handle_break(self, args):
         if len(args) < 2:
